@@ -34,6 +34,25 @@
     {name:'レンタル', href:'rental.html', key:'rental', badge:'NEW'},
   ];
 
+  // 公式SNS（アカウントを作ったら url を入れて on:true にするだけで表示されます）
+  const SNS = [
+    {key:'instagram', label:'Instagram', url:'https://www.instagram.com/takenotsuka_takemap/', on:true},
+    {key:'threads',   label:'Threads',   url:'https://www.threads.com/@takenotsuka_takemap',  on:true},
+    {key:'line',      label:'公式LINE',  url:'#', on:true},
+    {key:'x',         label:'X',         url:'', on:false},   // ← 開設したら url を入れて on:true
+    {key:'facebook',  label:'Facebook',  url:'', on:false},   // ← 同上
+    {key:'tiktok',    label:'TikTok',    url:'', on:false},   // ← 同上
+  ];
+  const SNS_ICON = {
+    instagram:'<svg viewBox="0 0 24 24" width="20" height="20"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>',
+    threads:'<svg viewBox="0 0 24 24" width="20" height="20"><path d="M16.5 11.3c-.1 0-.2-.1-.3-.1-.2-2.9-1.8-4.6-4.4-4.6-1.6 0-2.9.7-3.7 1.9l1.5 1c.5-.8 1.4-1 2.2-1 1 0 2.3.6 2.5 2.3-.5-.1-1-.2-1.6-.2-2.3 0-3.9 1.4-3.8 3.2.1 1.5 1.4 2.5 3.1 2.5 1.4 0 3-.7 3.4-3.1.3.2 1 .9 1.1 2 .1.7-.4 2.3-2.5 3.3-1.8.8-4.2.6-5.8-1C6.9 17.5 6.3 15.9 6.2 13c.1-2.9.7-4.5 2.2-5.8 1.6-1.6 4-1.8 5.8-1 1.6.7 2.3 2.1 2.6 3.3l1.8-.5C18.4 7 17.4 5.1 15.2 4.1 12.7 2.9 9.5 3.3 7.2 5.6 5.4 7.4 4.5 9.6 4.5 13s.9 5.6 2.7 7.4c1.5 1.5 3.4 2.3 5.4 2.3.5 0 1 0 1.4-.1 2-.4 3.6-1.5 4.4-3.3.7-1.4.6-3-.2-4.1-.4-.7-1-1.2-1.7-1.6zm-3.5 3.9c-.9 0-1.5-.4-1.5-1 0-.6.7-1.1 1.8-1.1.5 0 .9.1 1.4.2-.2 1.5-1 1.9-1.7 1.9z" fill="currentColor"/></svg>',
+    line:'<svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.6 1.7 4.9 4.3 6.3-.2.7-1 2.3-1.1 2.7 0 .2.1.3.3.2.3-.1 3.1-2 4-2.6.8.1 1.7.2 2.5.2 5.5 0 10-3.6 10-8s-4.5-8-10-8z" fill="currentColor"/></svg>',
+    x:'<svg viewBox="0 0 24 24" width="19" height="19"><path d="M3 3l8 10L3 21h2.5l6.7-7L17.5 21H21l-8.4-10.5L20.5 3H18l-6 6.5L7 3z" fill="currentColor"/></svg>',
+    facebook:'<svg viewBox="0 0 24 24" width="20" height="20"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.8 3.7-3.8 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0022 12z" fill="currentColor"/></svg>',
+    tiktok:'<svg viewBox="0 0 24 24" width="19" height="19"><path d="M16.5 5.6c-1-.7-1.6-1.8-1.8-3.1H12v11.5a2.4 2.4 0 11-1.7-2.3V9c-.3 0-.6-.1-.9-.1a5.3 5.3 0 105.3 5.3V8.6a6.4 6.4 0 003.8 1.2V7.1c-.8 0-1.5-.2-2-.6-.4-.2-.7-.5-1-.9z" fill="currentColor"/></svg>',
+  };
+  const snsLinksHTML = SNS.filter(s=>s.on).map(s=>`<li><a href="${s.url||'#'}" target="_blank" rel="noopener" aria-label="${s.label}">${SNS_ICON[s.key]}</a></li>`).join('');
+
   const active = document.body.getAttribute('data-page') || '';
 
   const megaHTML = c => `
@@ -88,11 +107,7 @@
         </div>
         <nav><h3 class="footer-h">さがす</h3><ul class="footer-list"><li><a href="#">食べる・飲む</a></li><li><a href="#">遊ぶ・でかける</a></li><li><a href="#">キレイ・健康になる</a></li><li><a href="#">買い物する</a></li><li><a href="#">生活する</a></li><li><a href="#">竹ノ塚に住む</a></li></ul></nav>
         <nav><h3 class="footer-h">サービス</h3><ul class="footer-list"><li><a href="jobs.html">求人</a></li><li><a href="coupons.html">クーポン</a></li><li><a href="board.html">掲示板</a></li><li><a href="rental.html">スタッフレンタル</a></li><li><a href="event-post.html">イベント掲載</a></li></ul></nav>
-        <nav><h3 class="footer-h">フォローする</h3><ul class="sns">
-          <li><a href="https://www.instagram.com/takenotsuka_takemap/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="20" height="20"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a></li>
-          <li><a href="https://www.threads.com/@takenotsuka_takemap" target="_blank" rel="noopener" aria-label="Threads"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M16.5 11.3c-.1 0-.2-.1-.3-.1-.2-2.9-1.8-4.6-4.4-4.6-1.6 0-2.9.7-3.7 1.9l1.5 1c.5-.8 1.4-1 2.2-1 1 0 2.3.6 2.5 2.3-.5-.1-1-.2-1.6-.2-2.3 0-3.9 1.4-3.8 3.2.1 1.5 1.4 2.5 3.1 2.5 1.4 0 3-.7 3.4-3.1.3.2 1 .9 1.1 2 .1.7-.4 2.3-2.5 3.3-1.8.8-4.2.6-5.8-1C6.9 17.5 6.3 15.9 6.2 13c.1-2.9.7-4.5 2.2-5.8 1.6-1.6 4-1.8 5.8-1 1.6.7 2.3 2.1 2.6 3.3l1.8-.5C18.4 7 17.4 5.1 15.2 4.1 12.7 2.9 9.5 3.3 7.2 5.6 5.4 7.4 4.5 9.6 4.5 13s.9 5.6 2.7 7.4c1.5 1.5 3.4 2.3 5.4 2.3.5 0 1 0 1.4-.1 2-.4 3.6-1.5 4.4-3.3.7-1.4.6-3-.2-4.1-.4-.7-1-1.2-1.7-1.6zm-3.5 3.9c-.9 0-1.5-.4-1.5-1 0-.6.7-1.1 1.8-1.1.5 0 .9.1 1.4.2-.2 1.5-1 1.9-1.7 1.9z" fill="currentColor"/></svg></a></li>
-          <li><a href="#" target="_blank" rel="noopener" aria-label="公式LINE"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.6 1.7 4.9 4.3 6.3-.2.7-1 2.3-1.1 2.7 0 .2.1.3.3.2.3-.1 3.1-2 4-2.6.8.1 1.7.2 2.5.2 5.5 0 10-3.6 10-8s-4.5-8-10-8z" fill="currentColor"/></svg></a></li>
-        </ul></nav>
+        <nav><h3 class="footer-h">フォローする</h3><ul class="sns">${snsLinksHTML}</ul></nav>
         <nav><h3 class="footer-h">竹マップについて</h3><ul class="footer-list"><li><a href="about.html">運営について</a></li><li><a href="contact.html">お問い合わせ</a></li><li><a href="advertising.html">広告掲載</a></li><li><a href="privacy.html">プライバシーポリシー</a></li></ul></nav>
       </div>
       <div class="footer-bottom"><img class="anim-sway" src="assets/img/chara/00.png" alt="">© 2026 竹マップ — Takenotsuka Local Map.</div>

@@ -432,6 +432,9 @@ img{max-width:100%;display:block;}
 .sns-icons .ig{background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);}
 .sns-icons .th{background:#101010;}
 .sns-icons .ln{background:#06c755;}
+.sns-icons .xx{background:#101010;}
+.sns-icons .fb{background:#1877f2;}
+.sns-icons .tt{background:#101010;}
 .apply-card{position:sticky;top:90px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow);}
 .apply-card__price{font-family:var(--hand);font-size:24px;color:var(--accent-deep);text-align:center;margin-bottom:4px;}
 .apply-card__cap{text-align:center;font-size:12.5px;color:var(--ink-faint);margin-bottom:16px;}
