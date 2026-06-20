@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>掲示板｜竹マップ — 竹ノ塚の情報交換</title>
+<meta name="theme-color" content="#8cc63f">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Klee+One:wght@400;600&family=Yomogi&family=Barlow:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/aruku.css">
+</head>
+<body data-page="board">
+<div class="loader js-loader" aria-hidden="true"><div class="loader__inner"><img class="loader__chara" src="assets/img/chara/00.png" alt=""><div class="loader__sub">竹の塚情報サイト</div><div class="loader__title"><span style="animation-delay:0s">竹</span><span style="animation-delay:.12s">マ</span><span style="animation-delay:.24s">ッ</span><span style="animation-delay:.36s">プ</span></div><div class="loader__dots"><i></i><i></i><i></i></div></div></div>
+<div id="tm-header"></div>
+
+<div class="page-head">
+  <div class="page-head__inner">
+    <div class="breadcrumb"><a href="index.html">HOME</a><span>›</span><span>掲示板</span></div>
+    <h1 class="page-head__title"><img src="assets/img/chara/12.png" alt="">みんなの掲示板</h1>
+    <p class="page-head__lead">竹ノ塚のことなら何でも。新しいお店、子育て、落とし物、助け合い。登録すれば誰でも投稿できる、ご近所の情報交換ひろばです。</p>
+    <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+      <button class="btn btn--primary btn--sm js-register">新規登録して参加する</button>
+      <button class="btn btn--ghost btn--sm js-login">ログイン</button>
+    </div>
+  </div>
+  <img class="page-head__chara anim-peek" src="assets/img/chara/14.png" alt="">
+</div>
+
+<section class="section"><div class="container">
+
+  <div class="note-banner">🛈 これはデザインプレビューです。投稿・返信・ユーザー登録の保存機能はWordPress実装時に有効化されます。</div>
+
+  <!-- 利用ルール -->
+  <div class="reveal" style="margin-bottom:30px;">
+    <h2 style="font-family:var(--hand);font-weight:600;font-size:20px;margin-bottom:14px;display:flex;align-items:center;gap:10px;"><img src="assets/img/chara/10.png" style="width:40px;height:40px;" class="anim-bob" alt="">みんなが気持ちよく使うための、3つのお約束</h2>
+    <div class="rules">
+      <div class="rule rule--ng"><div class="rule__ic">🚫</div><div><div class="rule__t">出会い目的の投稿は禁止</div><div class="rule__d">ナンパ・交際相手探し・わいせつな内容は固く禁止します。発見次第、投稿削除・利用停止の対象です。</div></div></div>
+      <div class="rule"><div class="rule__ic">🛡️</div><div><div class="rule__t">ブロック＆通報できます</div><div class="rule__d">不快な相手はブロックすれば以後表示されません。違反投稿は通報ボタンから運営に報告できます。</div></div></div>
+      <div class="rule"><div class="rule__ic">🤝</div><div><div class="rule__t">ご近所への思いやりを</div><div class="rule__d">誹謗中傷・晒し・無断の宣伝はNG。竹ノ塚で暮らす隣人として、やさしい言葉でお願いします。</div></div></div>
+      <div class="rule"><div class="rule__ic">📋</div><div><div class="rule__t">登録時に規約へ同意</div><div class="rule__d">新規登録の際に利用規約への同意が必要です。<a href="#" class="js-register" style="color:var(--accent-deep);font-weight:600;">規約を読んで登録する →</a></div></div></div>
+    </div>
+  </div>
+
+  <!-- カテゴリタブ -->
+  <div class="board-tabs reveal">
+    <span class="fchip on">すべて</span>
+    <span class="fchip">グルメの話</span>
+    <span class="fchip">イベント</span>
+    <span class="fchip">子育て</span>
+    <span class="fchip">お店の話</span>
+    <span class="fchip">助け合い</span>
+    <span class="fchip">落とし物</span>
+    <span class="fchip">雑談</span>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 320px;gap:26px;align-items:start;" class="reveal">
+
+    <!-- スレッド一覧 -->
+    <div>
+      <div class="thread-list">
+        <a class="thread" href="#">
+          <div class="thread__avatar"><img src="assets/img/chara/04.png" alt=""></div>
+          <div><span class="thread__cat">グルメの話</span><div class="thread__title">駅前にできた町中華「龍の郷」行った人いますか？</div><div class="thread__meta"><span>たけのこ太郎</span><span>2時間前</span></div></div>
+          <div class="thread__stat"><b>23</b><small>返信</small></div>
+        </a>
+        <a class="thread" href="#">
+          <div class="thread__avatar"><img src="assets/img/chara/15.png" alt=""></div>
+          <div><span class="thread__cat">子育て</span><div class="thread__title">竹の塚周辺でベビーカーで入りやすいカフェ教えて〜！</div><div class="thread__meta"><span>みかんママ</span><span>5時間前</span></div></div>
+          <div class="thread__stat"><b>41</b><small>返信</small></div>
+        </a>
+        <a class="thread" href="#">
+          <div class="thread__avatar"><img src="assets/img/chara/19.png" alt=""></div>
+          <div><span class="thread__cat">イベント</span><div class="thread__title">7/20のグルメ祭り、出店者で参加する方いますか？</div><div class="thread__meta"><span>商店街のヤマダ</span><span>昨日</span></div></div>
+          <div class="thread__stat"><b>12</b><small>返信</small></div>
+        </a>
+        <a class="thread" href="#">
+          <div class="thread__avatar"><img src="assets/img/chara/06.png" alt=""></div>
+          <div><span class="thread__cat">落とし物</span><div class="thread__title">【拡散希望】西竹ノ塚公園で子供の帽子を拾いました</div><div class="thread__meta"><span>さんぽ好き</span><span>昨日</span></div></div>
+          <div class="thread__stat"><b>7</b><small>返信</small></div>
+        </a>
+        <a class="thread" href="#">
+          <div class="thread__avatar"><img src="assets/img/chara/02.png" alt=""></div>
+          <div><span class="thread__cat">助け合い</span><div class="thread__title">引っ越しで家具を譲りたいです（無料・取りに来られる方）</div><div class="thread__meta"><span>保木間のスズキ</span><span>2日前</span></div></div>
+          <div class="thread__stat"><b>15</b><small>返信</small></div>
+        </a>
+        <a class="thread" href="#">
+          <div class="thread__avatar"><img src="assets/img/chara/13.png" alt=""></div>
+          <div><span class="thread__cat">お店の話</span><div class="thread__title">竹の湯さん、リニューアルしたって本当ですか？</div><div class="thread__meta"><span>銭湯マニア</span><span>3日前</span></div></div>
+          <div class="thread__stat"><b>28</b><small>返信</small></div>
+        </a>
+        <a class="thread" href="#">
+          <div class="thread__avatar"><img src="assets/img/chara/09.png" alt=""></div>
+          <div><span class="thread__cat">雑談</span><div class="thread__title">竹ノ塚に住んで10年。みんなのお気に入りスポットは？</div><div class="thread__meta"><span>ご近所さん</span><span>4日前</span></div></div>
+          <div class="thread__stat"><b>56</b><small>返信</small></div>
+        </a>
+      </div>
+      <div style="text-align:center;margin-top:26px;"><button class="btn btn--ghost">もっと見る</button></div>
+    </div>
+
+    <!-- サイド：新規投稿 -->
+    <aside>
+      <div class="form-card" style="padding:24px;">
+        <h3 style="font-family:var(--hand);font-weight:600;font-size:19px;margin-bottom:4px;">スレッドを立てる</h3>
+        <p style="font-size:12.5px;color:var(--ink-soft);margin-bottom:16px;">竹ノ塚のことを、みんなに聞いてみよう。</p>
+        <div class="form-row"><label>カテゴリ</label><select class="select"><option>グルメの話</option><option>イベント</option><option>子育て</option><option>お店の話</option><option>助け合い</option><option>落とし物</option><option>雑談</option></select></div>
+        <div class="form-row"><label>タイトル</label><input class="input" placeholder="例：おすすめのラーメン屋は？"></div>
+        <div class="form-row"><label>本文</label><textarea class="textarea" placeholder="自由に書いてください。"></textarea></div>
+        <button class="btn btn--primary btn--block js-register">投稿する（要ログイン）</button>
+        <p style="font-size:11.5px;color:var(--ink-faint);margin-top:10px;text-align:center;">投稿には<a href="#" class="js-register" style="color:var(--accent-deep);font-weight:600;">無料登録</a>が必要です</p>
+      </div>
+      <div class="form-card" style="padding:22px;margin-top:18px;background:var(--accent-soft);border-color:var(--accent);">
+        <div style="display:flex;align-items:center;gap:10px;"><img src="assets/img/chara/10.png" style="width:44px;height:44px;" class="anim-bob" alt=""><div style="font-family:var(--hand);font-weight:600;font-size:15px;color:var(--accent-deep);">登録は30秒、無料です</div></div>
+        <p style="font-size:12.5px;color:var(--ink-soft);margin-top:8px;">ニックネームとメールだけ。竹ノ塚の輪に入りましょう。</p>
+      </div>
+    </aside>
+
+  </div>
+</div></section>
+
+<div id="tm-footer"></div>
+<script src="assets/js/chrome.js"></script>
+<script>
+document.querySelectorAll('.fchip').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.fchip').forEach(x=>x.classList.remove('on'));c.classList.add('on');}));
+</script>
+</body>
+</html>

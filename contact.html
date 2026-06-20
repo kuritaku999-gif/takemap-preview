@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>お問い合わせ｜竹マップ</title>
+<meta name="theme-color" content="#8cc63f">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Klee+One:wght@400;600&family=Yomogi&family=Barlow:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/aruku.css">
+</head>
+<body data-page="contact">
+<div class="loader js-loader" aria-hidden="true"><div class="loader__inner"><img class="loader__chara" src="assets/img/chara/00.png" alt=""><div class="loader__sub">竹の塚情報サイト</div><div class="loader__title"><span style="animation-delay:0s">竹</span><span style="animation-delay:.12s">マ</span><span style="animation-delay:.24s">ッ</span><span style="animation-delay:.36s">プ</span></div><div class="loader__dots"><i></i><i></i><i></i></div></div></div>
+<div id="tm-header"></div>
+
+<div class="page-head">
+  <div class="page-head__inner">
+    <div class="breadcrumb"><a href="index.html">HOME</a><span>›</span><span>お問い合わせ</span></div>
+    <h1 class="page-head__title"><img src="assets/img/chara/12.png" alt="">お問い合わせ</h1>
+    <p class="page-head__lead">掲載のご相談、取材・掲載依頼、不具合のご報告など、お気軽にお寄せください。3営業日以内にご返信します。</p>
+  </div>
+  <img class="page-head__chara anim-peek" src="assets/img/chara/06.png" alt="">
+</div>
+
+<section class="section"><div class="container">
+  <div class="note-banner">🛈 これは仮設置ページです。送信機能はWordPress実装時に有効化されます。</div>
+  <div class="form-card reveal" style="max-width:680px;">
+    <div class="form-row"><label>お問い合わせ種別<span class="req">必須</span></label><select class="select"><option>掲載・取材について</option><option>求人の掲載について</option><option>クーポンの掲載について</option><option>イベントの掲載について</option><option>スタッフレンタルについて</option><option>広告掲載について</option><option>不具合のご報告</option><option>その他</option></select></div>
+    <div class="form-grid2">
+      <div class="form-row"><label>お名前<span class="req">必須</span></label><input class="input" placeholder="竹野 太郎"></div>
+      <div class="form-row"><label>お店・団体名（任意）</label><input class="input" placeholder="例：町中華 龍の郷"></div>
+    </div>
+    <div class="form-grid2">
+      <div class="form-row"><label>メールアドレス<span class="req">必須</span></label><input class="input" type="email" placeholder="you@example.com"></div>
+      <div class="form-row"><label>電話番号（任意）</label><input class="input" type="tel" placeholder="090-0000-0000"></div>
+    </div>
+    <div class="form-row"><label>お問い合わせ内容<span class="req">必須</span></label><textarea class="textarea" placeholder="ご用件をご記入ください。"></textarea></div>
+    <label class="check-row"><input type="checkbox" class="js-contact-agree"><a href="privacy.html" target="_blank">プライバシーポリシー</a>に同意のうえ送信します。</label>
+    <button class="btn btn--primary btn--block js-contact-submit" disabled>この内容で送信する</button>
+  </div>
+</div></section>
+
+<div id="tm-footer"></div>
+<script src="assets/js/chrome.js"></script>
+<script>
+var a=document.querySelector('.js-contact-agree'),s=document.querySelector('.js-contact-submit');
+a.addEventListener('change',function(){s.disabled=!a.checked;});
+</script>
+</body>
+</html>

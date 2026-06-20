@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>スタッフレンタル｜竹マップ — 人手が必要なとき、竹マップが助けます</title>
+<meta name="theme-color" content="#8cc63f">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Klee+One:wght@400;600&family=Yomogi&family=Barlow:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/aruku.css">
+</head>
+<body data-page="rental">
+<div class="loader js-loader" aria-hidden="true"><div class="loader__inner"><img class="loader__chara" src="assets/img/chara/00.png" alt=""><div class="loader__sub">竹の塚情報サイト</div><div class="loader__title"><span style="animation-delay:0s">竹</span><span style="animation-delay:.12s">マ</span><span style="animation-delay:.24s">ッ</span><span style="animation-delay:.36s">プ</span></div><div class="loader__dots"><i></i><i></i><i></i></div></div></div>
+<div id="tm-header"></div>
+
+<div class="page-head">
+  <div class="page-head__inner">
+    <div class="breadcrumb"><a href="index.html">HOME</a><span>›</span><span>スタッフレンタル</span></div>
+    <h1 class="page-head__title"><img src="assets/img/chara/14.png" alt="">竹マップ スタッフレンタル</h1>
+    <p class="page-head__lead">「今日だけ人手が足りない」「イベントの売り子をお願いしたい」。そんなとき、竹マップに登録された地元スタッフを1時間単位でレンタル。得意なこと・報酬を見て、ぴったりの人を選べます。</p>
+    <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+      <a class="btn btn--primary btn--sm" href="#staff-list">スタッフを探す</a>
+      <a class="btn btn--ghost btn--sm" href="#register">スタッフとして登録する</a>
+    </div>
+  </div>
+  <img class="page-head__chara anim-peek" src="assets/img/chara/19.png" alt="">
+</div>
+
+<!-- 使い方 -->
+<section class="section"><div class="container">
+  <div class="section__head reveal"><img class="section__chara" src="assets/img/chara/03.png" alt=""><div class="section__title"><span class="ja">レンタルの流れ</span><span class="en">How it works</span></div></div>
+  <div class="steps reveal">
+    <div class="step"><div class="step__num">1</div><div class="step__title">スタッフを選ぶ</div><p class="step__desc">得意なこと・報酬・人柄を見て、お願いしたいスタッフを選びます。</p></div>
+    <div class="step"><div class="step__num">2</div><div class="step__title">日時を相談</div><p class="step__desc">「この人をレンタル」から、希望日時とお仕事内容を送って調整。</p></div>
+    <div class="step"><div class="step__num">3</div><div class="step__title">当日おまかせ</div><p class="step__desc">竹マップが間に入って安心サポート。お仕事完了後にお支払い。</p></div>
+  </div>
+</div></section>
+
+<!-- スタッフ一覧 -->
+<section class="section section--tint" id="staff-list"><div class="container">
+  <div class="section__head reveal"><img class="section__chara" src="assets/img/chara/10.png" alt=""><div class="section__title"><span class="ja">レンタルできるスタッフ</span><span class="en">Our Staff</span></div></div>
+
+  <div class="note-banner">🛈 これはデザインプレビューです。スタッフ登録・レンタル予約の保存機能はWordPress実装時に有効化されます。</div>
+
+  <div class="staff-grid reveal">
+    <article class="staff">
+      <div class="staff__photo"><span class="staff__rate">¥1,500/h</span><img src="assets/img/chara/04.png" alt=""></div>
+      <div class="staff__body">
+        <div class="staff__name">たけ太<small>26・西竹ノ塚</small></div>
+        <div class="staff__skills"><span class="staff__skill">接客</span><span class="staff__skill">飲食ホール</span><span class="staff__skill">力仕事</span></div>
+        <p class="staff__bio">居酒屋バイト歴5年。元気な接客とスピードが自慢です。イベントの売り子もおまかせ！</p>
+        <div class="staff__foot"><span class="staff__pay">¥1,500<span>/時〜</span></span><button class="btn btn--primary btn--sm">この人をレンタル</button></div>
+      </div>
+    </article>
+    <article class="staff">
+      <div class="staff__photo"><span class="staff__rate">¥1,800/h</span><img src="assets/img/chara/15.png" alt=""></div>
+      <div class="staff__body">
+        <div class="staff__name">みかん<small>31・保木間</small></div>
+        <div class="staff__skills"><span class="staff__skill">子守り</span><span class="staff__skill">受付</span><span class="staff__skill">SNS撮影</span></div>
+        <p class="staff__bio">保育士資格あり。お店のイベントでの託児や、写真・SNS用の撮影が得意です。</p>
+        <div class="staff__foot"><span class="staff__pay">¥1,800<span>/時〜</span></span><button class="btn btn--primary btn--sm">この人をレンタル</button></div>
+      </div>
+    </article>
+    <article class="staff">
+      <div class="staff__photo"><span class="staff__rate">¥1,400/h</span><img src="assets/img/chara/09.png" alt=""></div>
+      <div class="staff__body">
+        <div class="staff__name">げんき<small>22・東竹ノ塚</small></div>
+        <div class="staff__skills"><span class="staff__skill">チラシ配り</span><span class="staff__skill">設営</span><span class="staff__skill">運搬</span></div>
+        <p class="staff__bio">体力には自信あり！イベント設営・撤去、ポスティング、なんでもやります。</p>
+        <div class="staff__foot"><span class="staff__pay">¥1,400<span>/時〜</span></span><button class="btn btn--primary btn--sm">この人をレンタル</button></div>
+      </div>
+    </article>
+    <article class="staff">
+      <div class="staff__photo"><span class="staff__rate">¥2,200/h</span><img src="assets/img/chara/12.png" alt=""></div>
+      <div class="staff__body">
+        <div class="staff__name">のぞみ<small>35・伊興</small></div>
+        <div class="staff__skills"><span class="staff__skill">経理補助</span><span class="staff__skill">PC作業</span><span class="staff__skill">レジ締め</span></div>
+        <p class="staff__bio">事務歴10年。繁忙期の経理・データ入力・レジ締めなど、デスクワークをお手伝い。</p>
+        <div class="staff__foot"><span class="staff__pay">¥2,200<span>/時〜</span></span><button class="btn btn--primary btn--sm">この人をレンタル</button></div>
+      </div>
+    </article>
+    <article class="staff">
+      <div class="staff__photo"><span class="staff__rate">¥1,600/h</span><img src="assets/img/chara/19.png" alt=""></div>
+      <div class="staff__body">
+        <div class="staff__name">さとし<small>28・竹の塚駅前</small></div>
+        <div class="staff__skills"><span class="staff__skill">調理補助</span><span class="staff__skill">仕込み</span><span class="staff__skill">皿洗い</span></div>
+        <p class="staff__bio">飲食キッチン経験豊富。仕込みから洗い場まで、厨房の即戦力になります。</p>
+        <div class="staff__foot"><span class="staff__pay">¥1,600<span>/時〜</span></span><button class="btn btn--primary btn--sm">この人をレンタル</button></div>
+      </div>
+    </article>
+    <article class="staff">
+      <div class="staff__photo"><span class="staff__rate">¥1,700/h</span><img src="assets/img/chara/06.png" alt=""></div>
+      <div class="staff__body">
+        <div class="staff__name">あや<small>24・西新井</small></div>
+        <div class="staff__skills"><span class="staff__skill">販売</span><span class="staff__skill">ラッピング</span><span class="staff__skill">接客</span></div>
+        <p class="staff__bio">アパレル販売出身。笑顔の接客とギフトラッピングが得意。物販イベントで活躍します。</p>
+        <div class="staff__foot"><span class="staff__pay">¥1,700<span>/時〜</span></span><button class="btn btn--primary btn--sm">この人をレンタル</button></div>
+      </div>
+    </article>
+  </div>
+  <div style="text-align:center;margin-top:34px;"><button class="btn btn--ghost">もっと見る（全42名）</button></div>
+</div></section>
+
+<!-- スタッフ登録 -->
+<section class="section" id="register"><div class="container">
+  <div class="section__head reveal"><img class="section__chara" src="assets/img/chara/14.png" alt=""><div class="section__title"><span class="ja">スタッフとして登録する</span><span class="en">Join as Staff</span></div></div>
+  <p style="color:var(--ink-soft);margin-bottom:22px;max-width:680px;">空いた時間に、ご近所でちょっと働く。あなたの「得意」を登録して、竹ノ塚のお店から声がかかるのを待ちましょう。</p>
+  <div class="form-card reveal" style="max-width:760px;">
+    <div class="form-row"><label>プロフィール写真<span class="req">必須</span></label><div class="uploader">クリックして顔写真・アイコンをアップロード</div></div>
+    <div class="form-grid2">
+      <div class="form-row"><label>ニックネーム<span class="req">必須</span></label><input class="input" placeholder="例：たけ太"></div>
+      <div class="form-row"><label>年代・エリア</label><input class="input" placeholder="例：26・西竹ノ塚"></div>
+    </div>
+    <div class="form-row"><label>得意なこと<span class="req">必須</span></label><div class="chips-input"><span class="chip">接客</span><span class="chip">調理補助</span><span class="chip">販売</span><span class="chip">力仕事</span><span class="chip">子守り</span><span class="chip">事務・PC</span><span class="chip">設営・運搬</span><span class="chip">SNS・撮影</span><span class="chip">チラシ配り</span></div></div>
+    <div class="form-grid2">
+      <div class="form-row"><label>希望報酬（時給）<span class="req">必須</span></label><input class="input" placeholder="例：1,500円"></div>
+      <div class="form-row"><label>稼働できる曜日・時間帯</label><input class="input" placeholder="例：平日夜・土日終日"></div>
+    </div>
+    <div class="form-row"><label>自己紹介・アピール</label><textarea class="textarea" placeholder="これまでの経験や、得意なこと、人柄を自由にご記入ください。"></textarea></div>
+    <div class="form-row"><label>連絡先メール<span class="req">必須</span></label><input class="input" type="email" placeholder="you@example.com"></div>
+    <button class="btn btn--primary btn--block">スタッフ登録を申し込む</button>
+    <p style="font-size:11.5px;color:var(--ink-faint);margin-top:10px;text-align:center;">登録後、竹マップ事務局による簡単な確認のうえ掲載されます。</p>
+  </div>
+</div></section>
+
+<!-- 依頼CTA -->
+<section class="cta">
+  <div class="container cta__inner">
+    <div class="cta__txt" style="text-align:right;"><h2 class="cta__title" style="font-family:var(--hand);font-weight:600;font-size:26px;">人手が足りない、を竹マップが解決。</h2><p style="opacity:.92;font-size:14px;margin-top:5px;">まずはお気軽にご相談ください。最短で当日手配も。</p></div>
+    <a class="btn btn--dark" href="#staff-list">スタッフを探す</a>
+  </div>
+</section>
+
+<div id="tm-footer"></div>
+<script src="assets/js/chrome.js"></script>
+<script>
+document.querySelectorAll('.chips-input .chip').forEach(c=>c.addEventListener('click',()=>c.classList.toggle('on')));
+</script>
+</body>
+</html>

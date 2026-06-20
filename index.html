@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>竹マップ — 足立区竹ノ塚エリアのローカルWebマガジン</title>
+<meta name="theme-color" content="#8cc63f">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Klee+One:wght@400;600&family=Yomogi&family=Barlow:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/aruku.css">
+<style>
+.hero{background:linear-gradient(180deg,#f8ffff,#f2ffff);padding:26px 0 38px;position:relative;overflow:hidden;}
+.hero > .container{max-width:1640px;}
+.hero__welcome{position:absolute;right:8px;bottom:-6px;width:120px;z-index:0;pointer-events:none;}
+.hero__grid{display:grid;grid-template-columns:1.55fr 1fr;gap:18px;position:relative;z-index:1;}
+.hero-slider{position:relative;}
+.hero-slider__tabs{display:flex;gap:6px;margin-bottom:10px;}
+.hero-slider__tab{font-family:var(--hand);font-weight:600;font-size:15px;padding:6px 18px;border-radius:99px 99px 0 0;background:transparent;border:none;cursor:pointer;color:var(--ink-soft);border-bottom:3px solid transparent;transition:.18s;}
+.hero-slider__tab.is-active{color:var(--accent-deep);border-bottom-color:var(--accent);}
+.hero-slider__viewport{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:16/9;}
+.hero-slider__track{display:flex;height:100%;transition:transform .5s cubic-bezier(.4,.1,.2,1);}
+.hero-slide{min-width:100%;height:100%;position:relative;display:flex;align-items:center;color:#fff;padding:0 36px;overflow:hidden;}
+.hero-slide__deco{position:absolute;inset:0;opacity:.14;background-size:38px 38px;background-image:radial-gradient(circle,#fff 2px,transparent 2px);}
+.hero-slide__inner{position:relative;z-index:1;max-width:62%;}
+.hero-slide__pre{display:inline-block;font-family:var(--hand);font-weight:600;font-size:14px;padding:4px 16px;border-radius:99px;background:rgba(255,255,255,.24);margin-bottom:14px;}
+.hero-slide__title{font-family:var(--hand);font-weight:600;font-size:34px;line-height:1.35;text-shadow:0 3px 14px rgba(0,0,0,.2);}
+.hero-slide__title small{display:block;font-size:17px;margin-top:8px;opacity:.96;}
+.hero-slide__sub{margin-top:14px;font-size:13.5px;opacity:.94;line-height:1.7;}
+.hero-slide__chara{position:absolute;right:18px;bottom:0;width:34%;max-width:185px;z-index:1;filter:drop-shadow(0 8px 16px rgba(0,0,0,.2));}
+.hero-slider__nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:99px;background:rgba(255,255,255,.94);border:none;display:grid;place-items:center;cursor:pointer;z-index:3;color:var(--ink);box-shadow:0 4px 14px rgba(0,0,0,.16);transition:.16s;}
+.hero-slider__nav:hover{background:#fff;color:var(--accent);}
+.hero-slider__nav--prev{left:14px;} .hero-slider__nav--next{right:14px;}
+.hero-slider__dots{position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:3;}
+.hero-slider__dots button{width:9px;height:9px;border-radius:99px;border:none;background:rgba(255,255,255,.55);cursor:pointer;padding:0;transition:.18s;}
+.hero-slider__dots button.is-active{background:#fff;width:24px;}
+.hero-banners{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);gap:12px;}
+.hbn{position:relative;border-radius:var(--radius);overflow:hidden;display:grid;align-content:center;padding:14px 16px;color:#fff;min-height:82px;box-shadow:var(--shadow);transition:.18s;}
+.hbn:hover{transform:translateY(-2px);filter:brightness(1.05);}
+.hbn__label{font-family:var(--hand);font-weight:600;font-size:16px;line-height:1.4;text-shadow:0 2px 8px rgba(0,0,0,.25);position:relative;z-index:1;}
+.hbn__sub{font-size:11px;opacity:.94;margin-top:3px;position:relative;z-index:1;}
+.hbn__chara{position:absolute;right:4px;bottom:-4px;width:54px;z-index:0;}
+.hbn--wide{grid-column:1/3;}
+.cat-strip{border-bottom:1px solid var(--line);background:var(--paper);}
+.cat-strip__inner{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:14px 24px;}
+.cat-chip{display:inline-flex;align-items:center;gap:7px;padding:8px 18px;border-radius:99px;background:var(--bg);font-family:var(--hand);font-weight:600;font-size:15px;transition:.18s;}
+.cat-chip .ic{width:9px;height:9px;border-radius:99px;background:var(--accent);}
+.cat-chip:hover{background:var(--ink);color:#fff;}.cat-chip:hover .ic{background:#fff;}
+.feature-grid{display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:1fr 1fr;gap:18px;}
+.feature{position:relative;border-radius:var(--radius);overflow:hidden;min-height:200px;box-shadow:var(--shadow);}
+.feature--lg{grid-row:1/3;min-height:auto;}
+.feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.3s;}
+.feature:hover img{transform:scale(1.04);}
+.feature::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(40,24,10,.78),rgba(40,24,10,0) 60%);}
+.feature__body{position:absolute;left:0;bottom:0;padding:20px 22px;color:#fff;z-index:1;}.feature--lg .feature__body{padding:28px 30px;}
+.tag{display:inline-block;font-family:var(--hand);font-weight:600;font-size:13px;padding:3px 14px;border-radius:99px;background:var(--accent);color:#fff;}
+.feature__title{font-family:var(--hand);font-weight:600;font-size:19px;line-height:1.5;margin-top:10px;text-shadow:0 2px 10px rgba(0,0,0,.4);}.feature--lg .feature__title{font-size:25px;}
+.feature__excerpt{font-size:13px;opacity:.92;margin-top:7px;line-height:1.65;}
+.area-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+.area-item{display:flex;align-items:center;gap:8px;padding:15px 16px;background:var(--paper);border:1px solid var(--line);border-radius:12px;font-family:var(--hand);font-weight:600;font-size:15px;transition:.18s;}
+.area-item:hover{background:var(--accent);border-color:var(--accent);color:#fff;}.area-item svg{flex:none;color:var(--accent);}.area-item:hover svg{color:#fff;}
+.series-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
+.series{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 12px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);text-align:center;transition:.2s;}
+.series:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent;}
+.series__img{width:74px;height:74px;border-radius:99px;overflow:hidden;background:var(--bg);box-shadow:0 4px 10px rgba(60,40,20,.1);transition:.2s;}
+.series:hover .series__img{transform:scale(1.08) rotate(-3deg);}.series__img img{width:100%;height:100%;object-fit:cover;}
+.series__title{font-family:var(--hand);font-weight:600;font-size:14px;line-height:1.4;}
+.rank{display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;}
+.rank-item{display:flex;align-items:center;gap:14px;padding:12px 4px;border-bottom:1px solid var(--line);}
+.rank-item__num{font-family:"Barlow";font-weight:700;font-size:28px;color:var(--accent);width:34px;flex:none;text-align:center;}
+.rank-item__img{width:74px;height:60px;flex:none;border-radius:10px;background:var(--bg-2);overflow:hidden;}.rank-item__img img{width:100%;height:100%;object-fit:cover;}
+.rank-item__cat{font-family:var(--hand);font-size:13px;font-weight:600;color:var(--accent-deep);}
+.rank-item__title{font-family:var(--hand);font-weight:600;font-size:15px;line-height:1.5;}
+.cta{background:var(--accent);color:#fff;position:relative;overflow:hidden;}
+.cta__chara{position:absolute;left:3%;bottom:-8px;width:130px;}
+.cta__inner{display:flex;align-items:center;justify-content:flex-end;gap:30px;padding:44px 24px;flex-wrap:wrap;position:relative;z-index:1;}
+.cta__txt{text-align:right;}
+.cta__title{font-family:var(--hand);font-weight:600;font-size:26px;}.cta__sub{opacity:.92;font-size:14px;margin-top:5px;}
+.cta__form{display:flex;gap:8px;}.cta__form input{padding:14px 16px;border:none;border-radius:10px;font-size:14px;width:240px;font-family:inherit;}
+@media(max-width:980px){.hero__grid{grid-template-columns:1fr;}.hero__welcome{display:none;}.feature-grid{grid-template-columns:1fr;grid-template-rows:none;}.feature--lg{grid-row:auto;}.area-grid{grid-template-columns:repeat(3,1fr);}.series-grid{grid-template-columns:repeat(3,1fr);}.rank{grid-template-columns:1fr;}.hero-slide__title{font-size:27px;}.hero-slide__inner{max-width:70%;}.cta__inner{justify-content:center;text-align:center;}.cta__txt{text-align:center;}.cta__chara{display:none;}}
+@media(max-width:560px){.area-grid{grid-template-columns:repeat(2,1fr);}.series-grid{grid-template-columns:repeat(2,1fr);}.cta__form{width:100%;}.cta__form input{flex:1;width:auto;}.hero-slide__title{font-size:21px;}.hero-banners{grid-template-rows:none;}}
+</style>
+</head>
+<body data-page="home">
+<div class="loader js-loader" aria-hidden="true">
+  <div class="loader__inner">
+    <img class="loader__chara" src="assets/img/chara/00.png" alt="">
+    <div class="loader__sub">竹の塚情報サイト</div>
+    <div class="loader__title"><span style="animation-delay:0s">竹</span><span style="animation-delay:.12s">マ</span><span style="animation-delay:.24s">ッ</span><span style="animation-delay:.36s">プ</span></div>
+    <div class="loader__dots"><i></i><i></i><i></i></div>
+  </div>
+</div>
+<div id="tm-header"></div>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <img class="hero__welcome anim-peek" src="assets/img/chara/07.png" alt="">
+  <div class="container">
+    <div class="hero__grid">
+      <div class="hero-slider">
+        <div class="hero-slider__tabs">
+          <button class="hero-slider__tab is-active" data-i="0">特集</button>
+          <button class="hero-slider__tab" data-i="1">連載</button>
+          <button class="hero-slider__tab" data-i="2">イベント</button>
+          <button class="hero-slider__tab" data-i="3">新店</button>
+        </div>
+        <div class="hero-slider__viewport">
+          <div class="hero-slider__track js-track">
+            <div class="hero-slide" style="background:linear-gradient(135deg,#f4a24e,#e3681f 55%,#b94c12);"><div class="hero-slide__deco"></div><div class="hero-slide__inner"><span class="hero-slide__pre">特集 FEATURE</span><h2 class="hero-slide__title">竹ノ塚ラーメン10選<small>駅前から保木間まで、歩いて確かめた一杯</small></h2><p class="hero-slide__sub">町中華の名店から新進気鋭の一杯まで、編集部の実食レポート。</p></div><img class="hero-slide__chara anim-float" src="assets/img/chara/04.png" alt=""></div>
+            <div class="hero-slide" style="background:linear-gradient(135deg,#4fb6a6,#2f7d70 55%,#1f5b50);"><div class="hero-slide__deco"></div><div class="hero-slide__inner"><span class="hero-slide__pre">連載 SERIES</span><h2 class="hero-slide__title">下町銭湯めぐり<small>煙突のある暮らし、竹の湯さんの100年</small></h2><p class="hero-slide__sub">竹ノ塚に残る銭湯文化を、編集部が毎月たずねます。</p></div><img class="hero-slide__chara anim-float" src="assets/img/chara/13.png" alt=""></div>
+            <div class="hero-slide" style="background:linear-gradient(135deg,#6a9fd0,#37618f 55%,#264a6e);"><div class="hero-slide__deco"></div><div class="hero-slide__inner"><span class="hero-slide__pre">イベント EVENT</span><h2 class="hero-slide__title">舎人公園の春<small>ベビーカーでも歩けるピクニックガイド</small></h2><p class="hero-slide__sub">桜、お弁当、動線まで。家族で過ごす春の一日プラン。</p></div><img class="hero-slide__chara anim-float" src="assets/img/chara/15.png" alt=""></div>
+            <div class="hero-slide" style="background:linear-gradient(135deg,#d98aa6,#b85a7c 55%,#8f4360);"><div class="hero-slide__deco"></div><div class="hero-slide__inner"><span class="hero-slide__pre">新店 NEW OPEN</span><h2 class="hero-slide__title">保木間に新ベーカリー<small>3代目が継ぐ、商店街の味</small></h2><p class="hero-slide__sub">地元で50年、焼き続けるパン屋の物語。</p></div><img class="hero-slide__chara anim-float" src="assets/img/chara/19.png" alt=""></div>
+          </div>
+          <button class="hero-slider__nav hero-slider__nav--prev js-prev" aria-label="前へ"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="hero-slider__nav hero-slider__nav--next js-next" aria-label="次へ"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="hero-slider__dots js-dots"></div>
+        </div>
+      </div>
+      <div class="hero-banners">
+        <a class="hbn hbn--wide" href="#" style="background:linear-gradient(120deg,#9bd24a,#6cae28);"><span class="hbn__label">竹ノ塚グルメ祭り 2026<br>開催決定！</span><span class="hbn__sub">2026.07.20 SAT｜竹の塚駅前広場</span><img class="hbn__chara anim-sway" src="assets/img/chara/14.png" alt=""></a>
+        <a class="hbn" href="jobs.html" style="background:linear-gradient(135deg,#3f9e8f,#2f7d70);"><span class="hbn__label">お店の<br>求人を見る</span><span class="hbn__sub">竹ノ塚で働く</span></a>
+        <a class="hbn" href="board.html" style="background:linear-gradient(135deg,#4079ad,#37618f);"><span class="hbn__label">みんなの<br>掲示板</span><span class="hbn__sub">情報交換しよう</span></a>
+        <a class="hbn" href="rental.html" style="background:linear-gradient(135deg,#e0a83c,#c98a1e);"><span class="hbn__label">スタッフ<br>レンタル</span><span class="hbn__sub">竹マップが助けます</span></a>
+        <a class="hbn" href="#" style="background:linear-gradient(135deg,#d2698a,#b85a7c);"><span class="hbn__label">読者<br>プレゼント</span><span class="hbn__sub">応募受付中</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cat-strip"><div class="cat-strip__inner">
+  <a class="cat-chip is-taberu" href="#"><span class="ic"></span>食べる・飲む</a>
+  <a class="cat-chip is-asobu" href="#"><span class="ic"></span>遊ぶ・でかける</a>
+  <a class="cat-chip is-kirei" href="#"><span class="ic"></span>キレイ・健康になる</a>
+  <a class="cat-chip is-kaimono" href="#"><span class="ic"></span>買い物する</a>
+  <a class="cat-chip is-seikatsu" href="#"><span class="ic"></span>生活する</a>
+  <a class="cat-chip is-sumu" href="#"><span class="ic"></span>竹ノ塚に住む</a>
+</div></div>
+
+<section class="section section--yellow"><div class="container">
+  <div class="section__head reveal"><img class="section__chara" src="assets/img/chara/03.png" alt=""><div class="section__title"><span class="ja">新店舗オープン</span><span class="en">New Open</span></div><a class="section__more" href="#">すべて見る →</a></div>
+  <div class="grid grid--3">
+    <article class="card is-taberu reveal"><a href="#"><div class="card__media"><img src="assets/img/sozai/36.png" alt=""><span class="card__cat">食べる</span><span class="card__badge en">NEW</span></div></a><div class="card__body"><h3 class="card__title">駅前にオープンした町中華「龍の郷」を訪ねて</h3><div class="card__meta"><span class="en">2026.05.01</span><span>📍竹の塚駅前</span></div></div></article>
+    <article class="card is-taberu reveal"><a href="#"><div class="card__media"><img src="assets/img/sozai/44.png" alt=""><span class="card__cat">食べる</span><span class="card__badge en">NEW</span></div></a><div class="card__body"><h3 class="card__title">保木間に新しいベーカリー、3代目が継ぐ味</h3><div class="card__meta"><span class="en">2026.04.28</span><span>📍保木間</span></div></div></article>
+    <article class="card is-kirei reveal"><a href="#"><div class="card__media"><img src="assets/img/sozai/02.png" alt=""><span class="card__cat">キレイ・健康</span><span class="card__badge en">NEW</span></div></a><div class="card__body"><h3 class="card__title">伊興エリアに、隠れ家ヘアサロン誕生</h3><div class="card__meta"><span class="en">2026.04.25</span><span>📍伊興</span></div></div></article>
+  </div>
+</div></section>
+
+<section class="section section--blue"><div class="container">
+  <div class="section__head reveal"><img class="section__chara" src="assets/img/chara/15.png" alt=""><div class="section__title"><span class="ja">イベント情報</span><span class="en">Event</span></div><a class="btn btn--ghost btn--sm" href="event-post.html" style="margin-right:10px;">＋ イベントを掲載する</a><a class="section__more" href="event-single.html">すべて見る →</a></div>
+  <div class="event-list reveal">
+    <a class="event" href="event-single.html"><div class="event__date"><div class="m">JUL</div><div class="d">20</div><div class="w">SUN</div></div><div><span class="event__cat">お祭り</span><div class="event__title">竹ノ塚グルメ祭り 2026</div><div class="event__meta"><span>📍竹の塚駅前広場</span><span>11:00〜19:00</span></div></div><span class="event__go">詳細を見る →</span></a>
+    <a class="event" href="event-single.html"><div class="event__date"><div class="m">JUL</div><div class="d">06</div><div class="w">SUN</div></div><div><span class="event__cat">マルシェ</span><div class="event__title">舎人公園 サンデーマルシェ｜地元野菜と手づくり雑貨</div><div class="event__meta"><span>📍舎人公園</span><span>10:00〜15:00</span></div></div><span class="event__go">詳細を見る →</span></a>
+    <a class="event" href="event-single.html"><div class="event__date"><div class="m">JUL</div><div class="d">13</div><div class="w">SUN</div></div><div><span class="event__cat">子育て</span><div class="event__title">親子で楽しむ えほんの読み聞かせ会</div><div class="event__meta"><span>📍竹の塚図書館</span><span>14:00〜15:00</span></div></div><span class="event__go">詳細を見る →</span></a>
+    <a class="event" href="event-single.html"><div class="event__date"><div class="m">AUG</div><div class="d">02</div><div class="w">SAT</div></div><div><span class="event__cat">夏祭り</span><div class="event__title">保木間 ほおずき市＆盆踊り大会</div><div class="event__meta"><span>📍保木間公園</span><span>17:00〜21:00</span></div></div><span class="event__go">詳細を見る →</span></a>
+  </div>
+</div></section>
+
+<section class="section section--pink"><div class="container">
+  <div class="section__head reveal"><img class="section__chara" src="assets/img/chara/10.png" alt=""><div class="section__title"><span class="ja">いま、竹ノ塚で。</span><span class="en">Feature</span></div></div>
+  <div class="feature-grid reveal">
+    <a class="feature feature--lg" href="#"><img src="assets/img/sozai/39.png" alt=""><div class="feature__body"><span class="tag">特集</span><h3 class="feature__title">竹ノ塚ラーメン10選<br>駅前から保木間まで</h3><p class="feature__excerpt">町中華の名店から最新の一杯まで、編集部が歩いて確かめた竹ノ塚のラーメン地図。</p></div></a>
+    <a class="feature" href="#"><img src="assets/img/sozai/40.png" alt=""><div class="feature__body"><span class="tag" style="background:var(--c-kurasu)">暮らす</span><h3 class="feature__title">下町銭湯めぐり</h3></div></a>
+    <a class="feature" href="#"><img src="assets/img/sozai/42.png" alt=""><div class="feature__body"><span class="tag" style="background:var(--c-asobu)">遊ぶ</span><h3 class="feature__title">舎人公園の春</h3></div></a>
+  </div>
+</div></section>
+
+<section class="section section--mint"><div class="container">
+  <div class="section__head reveal"><img class="section__chara" src="assets/img/chara/12.png" alt=""><div class="section__title"><span class="ja">最新の記事</span><span class="en">Latest</span></div><a class="section__more" href="#">すべて見る →</a></div>
+  <div class="grid grid--4">
+    <article class="card is-taberu reveal"><a href="#"><div class="card__media"><img src="assets/img/sozai/43.png" alt=""><span class="card__cat">食べる</span></div></a><div class="card__body"><h3 class="card__title">竹ノ塚商店街で50年、町中華「華隆」のチャーハンに迫る</h3><div class="card__meta"><span class="en">2026.05.01</span><span>📍東竹ノ塚</span></div></div></article>
+    <article class="card is-kurasu reveal"><a href="#"><div class="card__media"><img src="assets/img/sozai/47.png" alt=""><span class="card__cat">暮らす</span></div></a><div class="card__body"><h3 class="card__title">下町の煙突、夕暮れの銭湯。竹の湯さんの100年</h3><div class="card__meta"><span class="en">2026.04.30</span><span>📍保木間</span></div></div></article>
+    <article class="card is-kosodate reveal"><a href="#"><div class="card__media"><img src="assets/img/sozai/48.png" alt=""><span class="card__cat">子育て</span></div></a><div class="card__body"><h3 class="card__title">ベビーカーで歩ける、竹ノ塚の公園7選</h3><div class="card__meta"><span class="en">2026.04.27</span><span>📍西竹ノ塚</span></div></div></article>
+    <article class="card is-asobu reveal"><a href="#"><div class="card__media"><img src="assets/img/sozai/49.png" alt=""><span class="card__cat">遊ぶ</span></div></a><div class="card__body"><h3 class="card__title">舎人公園で春のピクニック、おすすめお弁当も</h3><div class="card__meta"><span class="en">2026.04.25</span><span>📍舎人</span></div></div></article>
+    <article class="card is-taberu reveal"><a href="#"><div class="card__media"><img src="assets/img/sozai/50.png" alt=""><span class="card__cat">食べる</span></div></a><div class="card__body"><h3 class="card__title">深夜営業の名店、おひとりさま歓迎の3軒</h3><div class="card__meta"><span class="en">2026.04.22</span><span>📍竹の塚駅前</span></div></div></article>
+    <article class="card is-kirei reveal"><a href="#"><div class="card__media"><img src="assets/img/sozai/52.png" alt=""><span class="card__cat">キレイ・健康</span></div></a><div class="card__body"><h3 class="card__title">スパ&サウナ、駅近のリラックス空間ガイド</h3><div class="card__meta"><span class="en">2026.04.20</span><span>📍西新井</span></div></div></article>
+    <article class="card is-sumu reveal"><a href="#"><div class="card__media"><img src="assets/img/sozai/53.png" alt=""><span class="card__cat">住む</span></div></a><div class="card__body"><h3 class="card__title">高架化で変わった竹ノ塚、これからの街づくり</h3><div class="card__meta"><span class="en">2026.04.18</span><span>📍竹の塚駅前</span></div></div></article>
+    <article class="card is-kurasu reveal"><a href="#"><div class="card__media"><img src="assets/img/sozai/55.png" alt=""><span class="card__cat">暮らす</span></div></a><div class="card__body"><h3 class="card__title">商店街のひと:八百屋三代目、井上さんの朝</h3><div class="card__meta"><span class="en">2026.04.15</span><span>📍東竹ノ塚</span></div></div></article>
+  </div>
+</div></section>
+
+<section class="section section--lav"><div class="container">
+  <div class="section__head reveal"><img class="section__chara" src="assets/img/chara/06.png" alt=""><div class="section__title"><span class="ja">エリアで探す</span><span class="en">By Area</span></div></div>
+  <div class="area-grid reveal">
+    <a class="area-item" href="#"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.4" fill="currentColor"/></svg>西竹ノ塚</a>
+    <a class="area-item" href="#"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.4" fill="currentColor"/></svg>東竹ノ塚</a>
+    <a class="area-item" href="#"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.4" fill="currentColor"/></svg>竹の塚駅前</a>
+    <a class="area-item" href="#"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.4" fill="currentColor"/></svg>保木間</a>
+    <a class="area-item" href="#"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.4" fill="currentColor"/></svg>伊興</a>
+    <a class="area-item" href="#"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.4" fill="currentColor"/></svg>入谷</a>
+    <a class="area-item" href="#"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.4" fill="currentColor"/></svg>舎人</a>
+    <a class="area-item" href="#"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.4" fill="currentColor"/></svg>西新井</a>
+    <a class="area-item" href="#"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.4" fill="currentColor"/></svg>谷在家</a>
+    <a class="area-item" href="#"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.4" fill="currentColor"/></svg>六町</a>
+  </div>
+</div></section>
+
+<section class="section section--peach"><div class="container">
+  <div class="section__head reveal"><img class="section__chara" src="assets/img/chara/09.png" alt=""><div class="section__title"><span class="ja">連載</span><span class="en">Series</span></div></div>
+  <div class="series-grid reveal">
+    <a class="series" href="#"><div class="series__img"><img src="assets/img/sozai/57.png" alt=""></div><div class="series__title">町中華 月イチ巡礼</div></a>
+    <a class="series" href="#"><div class="series__img"><img src="assets/img/sozai/58.png" alt=""></div><div class="series__title">ベーカリー散歩</div></a>
+    <a class="series" href="#"><div class="series__img"><img src="assets/img/sozai/59.png" alt=""></div><div class="series__title">竹ノ塚ベビ連れ</div></a>
+    <a class="series" href="#"><div class="series__img"><img src="assets/img/sozai/60.png" alt=""></div><div class="series__title">今宵ここで一杯</div></a>
+    <a class="series" href="#"><div class="series__img"><img src="assets/img/sozai/64.png" alt=""></div><div class="series__title">商店街のひと</div></a>
+    <a class="series" href="#"><div class="series__img"><img src="assets/img/sozai/65.png" alt=""></div><div class="series__title">駅から歩く20分</div></a>
+  </div>
+</div></section>
+
+<section class="section section--blue"><div class="container">
+  <div class="section__head reveal"><img class="section__chara" src="assets/img/chara/19.png" alt=""><div class="section__title"><span class="ja">人気の記事</span><span class="en">Popular</span></div></div>
+  <div class="rank reveal">
+    <div class="rank-item"><span class="rank-item__num en">01</span><div class="rank-item__img"><img src="assets/img/sozai/43.png" alt=""></div><div><span class="rank-item__cat">食べる</span><h3 class="rank-item__title">竹ノ塚商店街で50年、町中華「華隆」のチャーハンに迫る</h3></div></div>
+    <div class="rank-item"><span class="rank-item__num en">02</span><div class="rank-item__img"><img src="assets/img/sozai/47.png" alt=""></div><div><span class="rank-item__cat">暮らす</span><h3 class="rank-item__title">下町の煙突、夕暮れの銭湯。竹の湯さんの100年</h3></div></div>
+    <div class="rank-item"><span class="rank-item__num en">03</span><div class="rank-item__img"><img src="assets/img/sozai/48.png" alt=""></div><div><span class="rank-item__cat">子育て</span><h3 class="rank-item__title">ベビーカーで歩ける、竹ノ塚の公園7選</h3></div></div>
+    <div class="rank-item"><span class="rank-item__num en">04</span><div class="rank-item__img"><img src="assets/img/sozai/66.png" alt=""></div><div><span class="rank-item__cat">遊ぶ</span><h3 class="rank-item__title">舎人公園で春のピクニック、おすすめお弁当も</h3></div></div>
+    <div class="rank-item"><span class="rank-item__num en">05</span><div class="rank-item__img"><img src="assets/img/sozai/68.png" alt=""></div><div><span class="rank-item__cat">食べる</span><h3 class="rank-item__title">深夜営業の名店、おひとりさま歓迎の3軒</h3></div></div>
+    <div class="rank-item"><span class="rank-item__num en">06</span><div class="rank-item__img"><img src="assets/img/sozai/69.png" alt=""></div><div><span class="rank-item__cat">暮らす</span><h3 class="rank-item__title">商店街のひと:八百屋三代目、井上さんの朝</h3></div></div>
+  </div>
+</div></section>
+
+<section class="section section--pink"><div class="container">
+  <div class="section__head reveal"><img class="section__chara" src="assets/img/chara/04.png" alt=""><div class="section__title"><span class="ja">竹マップのSNS</span><span class="en">Follow us</span></div></div>
+  <div class="sns-block reveal">
+    <!-- Instagram -->
+    <div class="sns-col">
+      <div class="sns-col__head">
+        <div class="sns-col__icon sns-col__icon--ig"><svg viewBox="0 0 24 24" width="24" height="24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></div>
+        <div><div class="sns-col__name">Instagram</div><div class="sns-col__handle">@takenotsuka_takemap</div></div>
+        <a class="btn btn--primary btn--sm sns-col__follow" href="https://www.instagram.com/takenotsuka_takemap/" target="_blank" rel="noopener">フォロー</a>
+      </div>
+      <div class="sns-feed">
+        <a class="sns-post" href="https://www.instagram.com/takenotsuka_takemap/" target="_blank" rel="noopener"><img src="assets/img/sozai/61.png" alt=""><div class="sns-post__ov"><svg viewBox="0 0 24 24" width="22" height="22"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/></svg></div></a>
+        <a class="sns-post" href="https://www.instagram.com/takenotsuka_takemap/" target="_blank" rel="noopener"><img src="assets/img/sozai/41.png" alt=""><div class="sns-post__ov"></div></a>
+        <a class="sns-post" href="https://www.instagram.com/takenotsuka_takemap/" target="_blank" rel="noopener"><img src="assets/img/sozai/08.png" alt=""><div class="sns-post__ov"></div></a>
+        <a class="sns-post" href="https://www.instagram.com/takenotsuka_takemap/" target="_blank" rel="noopener"><img src="assets/img/sozai/51.png" alt=""><div class="sns-post__ov"></div></a>
+        <a class="sns-post" href="https://www.instagram.com/takenotsuka_takemap/" target="_blank" rel="noopener"><img src="assets/img/sozai/67.png" alt=""><div class="sns-post__ov"></div></a>
+        <a class="sns-post" href="https://www.instagram.com/takenotsuka_takemap/" target="_blank" rel="noopener"><img src="assets/img/sozai/24.png" alt=""><div class="sns-post__ov"></div></a>
+      </div>
+    </div>
+    <!-- Threads -->
+    <div class="sns-col">
+      <div class="sns-col__head">
+        <div class="sns-col__icon sns-col__icon--th"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M16.5 11.3c-.1 0-.2-.1-.3-.1-.2-2.9-1.8-4.6-4.4-4.6-1.6 0-2.9.7-3.7 1.9l1.5 1c.5-.8 1.4-1 2.2-1 1 0 2.3.6 2.5 2.3-.5-.1-1-.2-1.6-.2-2.3 0-3.9 1.4-3.8 3.2.1 1.5 1.4 2.5 3.1 2.5 1.4 0 3-.7 3.4-3.1.3.2 1 .9 1.1 2 .1.7-.4 2.3-2.5 3.3-1.8.8-4.2.6-5.8-1C6.9 17.5 6.3 15.9 6.2 13c.1-2.9.7-4.5 2.2-5.8 1.6-1.6 4-1.8 5.8-1 1.6.7 2.3 2.1 2.6 3.3l1.8-.5C18.4 7 17.4 5.1 15.2 4.1 12.7 2.9 9.5 3.3 7.2 5.6 5.4 7.4 4.5 9.6 4.5 13s.9 5.6 2.7 7.4c1.5 1.5 3.4 2.3 5.4 2.3.5 0 1 0 1.4-.1 2-.4 3.6-1.5 4.4-3.3.7-1.4.6-3-.2-4.1-.4-.7-1-1.2-1.7-1.6zm-3.5 3.9c-.9 0-1.5-.4-1.5-1 0-.6.7-1.1 1.8-1.1.5 0 .9.1 1.4.2-.2 1.5-1 1.9-1.7 1.9z" fill="currentColor"/></svg></div>
+        <div><div class="sns-col__name">Threads</div><div class="sns-col__handle">@takenotsuka_takemap</div></div>
+        <a class="btn btn--dark btn--sm sns-col__follow" href="https://www.threads.com/@takenotsuka_takemap" target="_blank" rel="noopener">フォロー</a>
+      </div>
+      <div class="thread-feed">
+        <a class="th-post" href="https://www.threads.com/@takenotsuka_takemap" target="_blank" rel="noopener"><div class="th-post__av"><img src="assets/img/chara/00.png" alt=""></div><div><div class="th-post__name">竹マップ<small>@takenotsuka_takemap</small></div><div class="th-post__text">駅前の町中華「龍の郷」さん、本日オープン！さっそく行ってきました🍜 詳しくはサイトの新店記事で👀</div></div></a>
+        <a class="th-post" href="https://www.threads.com/@takenotsuka_takemap" target="_blank" rel="noopener"><div class="th-post__av"><img src="assets/img/chara/00.png" alt=""></div><div><div class="th-post__name">竹マップ<small>@takenotsuka_takemap</small></div><div class="th-post__text">7/20の竹ノ塚グルメ祭り、出店者さん募集中です！お店の方はDMください📩</div></div></a>
+        <a class="th-post" href="https://www.threads.com/@takenotsuka_takemap" target="_blank" rel="noopener"><div class="th-post__av"><img src="assets/img/chara/00.png" alt=""></div><div><div class="th-post__name">竹マップ<small>@takenotsuka_takemap</small></div><div class="th-post__text">舎人公園の桜、今がちょうど見頃です🌸ベビーカーでも歩けるお散歩コースまとめました。</div></div></a>
+      </div>
+    </div>
+  </div>
+  <!-- 公式LINE -->
+  <a class="reveal" href="#" style="display:flex;align-items:center;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:24px;background:#06c755;color:#fff;border-radius:16px;padding:18px 24px;box-shadow:var(--shadow);">
+    <svg viewBox="0 0 24 24" width="30" height="30" style="flex:none;"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.6 1.7 4.9 4.3 6.3-.2.7-1 2.3-1.1 2.7 0 .2.1.3.3.2.3-.1 3.1-2 4-2.6.8.1 1.7.2 2.5.2 5.5 0 10-3.6 10-8s-4.5-8-10-8z" fill="#fff"/></svg>
+    <span style="font-family:var(--hand);font-size:18px;">竹マップ公式LINE｜新店・イベント・クーポンをいちはやくお届け</span>
+    <span class="btn btn--sm" style="background:#fff;color:#06c755;margin-left:6px;">友だち追加する</span>
+  </a>
+</div></section>
+
+<section class="cta">
+  <img class="cta__chara anim-bob" src="assets/img/chara/02.png" alt="">
+  <div class="container cta__inner">
+    <div class="cta__txt"><h2 class="cta__title">竹ノ塚の "いま" を、メールで。</h2><p class="cta__sub">月イチ更新・新店舗とイベントだけ厳選してお届けします。</p></div>
+    <form class="cta__form" onsubmit="return false;"><input type="email" placeholder="メールアドレス" aria-label="メールアドレス"><button class="btn btn--dark" type="submit">登録する</button></form>
+  </div>
+</section>
+
+<div id="tm-footer"></div>
+<script src="assets/js/chrome.js"></script>
+<script>
+(function(){
+  const track=document.querySelector('.js-track');const slides=track.children.length;
+  const dotsWrap=document.querySelector('.js-dots');const tabs=[...document.querySelectorAll('.hero-slider__tab')];
+  let i=0,timer;
+  for(let n=0;n<slides;n++){const b=document.createElement('button');if(n===0)b.classList.add('is-active');b.addEventListener('click',()=>{go(n);reset();});dotsWrap.appendChild(b);}
+  const dots=[...dotsWrap.children];
+  function go(n){i=(n+slides)%slides;track.style.transform=`translateX(-${i*100}%)`;dots.forEach((d,x)=>d.classList.toggle('is-active',x===i));tabs.forEach((t,x)=>t.classList.toggle('is-active',x===i));}
+  function next(){go(i+1);}
+  document.querySelector('.js-next').addEventListener('click',()=>{next();reset();});
+  document.querySelector('.js-prev').addEventListener('click',()=>{go(i-1);reset();});
+  tabs.forEach((t,n)=>t.addEventListener('click',()=>{go(n);reset();}));
+  function reset(){clearInterval(timer);timer=setInterval(next,5000);}
+  reset();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>イベントを掲載する｜竹マップ</title>
+<meta name="theme-color" content="#8cc63f">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Klee+One:wght@400;600&family=Yomogi&family=Barlow:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/aruku.css">
+</head>
+<body data-page="events">
+<div class="loader js-loader" aria-hidden="true"><div class="loader__inner"><img class="loader__chara" src="assets/img/chara/00.png" alt=""><div class="loader__sub">竹の塚情報サイト</div><div class="loader__title"><span style="animation-delay:0s">竹</span><span style="animation-delay:.12s">マ</span><span style="animation-delay:.24s">ッ</span><span style="animation-delay:.36s">プ</span></div><div class="loader__dots"><i></i><i></i><i></i></div></div></div>
+<div id="tm-header"></div>
+
+<div class="page-head">
+  <div class="page-head__inner">
+    <div class="breadcrumb"><a href="index.html">HOME</a><span>›</span><a href="event-single.html">イベント</a><span>›</span><span>掲載する</span></div>
+    <h1 class="page-head__title"><img src="assets/img/chara/15.png" alt="">イベントを掲載する</h1>
+    <p class="page-head__lead">竹ノ塚で開催するイベントを、誰でも無料で掲載できます。お祭り、マルシェ、ワークショップ、お店のフェアまで。下のフォームに入力して掲載を依頼してください。</p>
+  </div>
+  <img class="page-head__chara anim-peek" src="assets/img/chara/19.png" alt="">
+</div>
+
+<section class="section"><div class="container">
+  <div class="note-banner">🛈 これはデザインプレビューです。投稿・画像登録の保存機能はWordPress実装時に有効化されます。</div>
+
+  <div class="form-card reveal" style="max-width:820px;">
+
+    <h2 style="font-family:var(--hand);font-size:20px;margin-bottom:16px;">📝 イベント情報</h2>
+    <div class="form-row"><label>イベント名<span class="req">必須</span></label><input class="input" placeholder="例：竹ノ塚グルメ祭り 2026"></div>
+    <div class="form-row"><label>カテゴリ</label><select class="select"><option>お祭り</option><option>マルシェ・市</option><option>ワークショップ</option><option>子育て・親子</option><option>ライブ・ステージ</option><option>お店のフェア・セール</option><option>スポーツ</option><option>その他</option></select></div>
+    <div class="form-row"><label>イベント内容<span class="req">必須</span></label><textarea class="textarea" placeholder="どんなイベントか、見どころや当日の流れを自由にご記入ください。"></textarea></div>
+
+    <h2 style="font-family:var(--hand);font-size:20px;margin:26px 0 16px;">📅 開催情報</h2>
+    <div class="form-row"><label>主催者名<span class="req">必須</span></label><input class="input" placeholder="例：竹ノ塚商店街振興組合"></div>
+    <div class="form-grid2">
+      <div class="form-row"><label>開催日<span class="req">必須</span></label><input class="input" type="date"></div>
+      <div class="form-row"><label>時間</label><div style="display:flex;gap:8px;align-items:center;"><input class="input" type="time"><span>〜</span><input class="input" type="time"></div></div>
+    </div>
+    <div class="form-row"><label>場所<span class="req">必須</span></label><input class="input" placeholder="例：竹の塚駅前広場（足立区竹の塚6丁目）"></div>
+    <div class="form-grid2">
+      <div class="form-row"><label>参加人数・定員</label><input class="input" placeholder="例：先着100名 / 定員なし"></div>
+      <div class="form-row"><label>料金</label><input class="input" placeholder="例：無料 / 大人500円・子供無料"></div>
+    </div>
+
+    <h2 style="font-family:var(--hand);font-size:20px;margin:26px 0 16px;">🎟 申し込み</h2>
+    <div class="form-row"><label>申し込み受付方法</label><select class="select"><option>竹マップ内の申し込みフォームを使う</option><option>外部サイト・専用フォーム（URL）</option><option>電話で受付</option><option>申し込み不要（自由参加）</option></select></div>
+    <div class="form-row"><label>申し込み先URL／電話番号</label><input class="input" placeholder="https://… または 03-0000-0000"></div>
+
+    <h2 style="font-family:var(--hand);font-size:20px;margin:26px 0 16px;">🔗 主催者のSNS</h2>
+    <p style="font-size:12.5px;color:var(--ink-soft);margin-bottom:14px;">入力したSNSは、イベント詳細ページにアイコンで表示されます。</p>
+    <div class="form-row"><label><span style="display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);color:#fff;vertical-align:middle;margin-right:6px;"><svg viewBox="0 0 24 24" width="13" height="13"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></span>Instagram</label><input class="input" placeholder="https://www.instagram.com/…"></div>
+    <div class="form-row"><label><span style="display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;background:#101010;color:#fff;vertical-align:middle;margin-right:6px;font-weight:700;">@</span>Threads</label><input class="input" placeholder="https://www.threads.com/@…"></div>
+    <div class="form-row"><label><span style="display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;background:#06c755;color:#fff;vertical-align:middle;margin-right:6px;"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.6 1.7 4.9 4.3 6.3-.2.7-1 2.3-1.1 2.7 0 .2.1.3.3.2.3-.1 3.1-2 4-2.6.8.1 1.7.2 2.5.2 5.5 0 10-3.6 10-8s-4.5-8-10-8z" fill="currentColor"/></svg></span>公式LINE</label><input class="input" placeholder="https://lin.ee/…"></div>
+
+    <h2 style="font-family:var(--hand);font-size:20px;margin:26px 0 16px;">🖼 画像登録</h2>
+    <div class="form-row"><label>メイン画像<span class="req">必須</span></label><div class="uploader">クリックしてメインビジュアルをアップロード（推奨 1200×600px）</div></div>
+    <div class="form-row"><label>ギャラリー画像（複数可）</label><div class="uploader">クリックして会場の様子などを追加（最大8枚）</div></div>
+
+    <h2 style="font-family:var(--hand);font-size:20px;margin:26px 0 16px;">✉️ 連絡先</h2>
+    <div class="form-grid2">
+      <div class="form-row"><label>ご担当者名</label><input class="input" placeholder="例：田中"></div>
+      <div class="form-row"><label>連絡先メール<span class="req">必須</span></label><input class="input" type="email" placeholder="you@example.com"></div>
+    </div>
+
+    <label class="check-row"><input type="checkbox" class="js-evt-agree">掲載ガイドライン（公序良俗に反する内容・出会い目的のイベント等の掲載禁止）に同意します。</label>
+    <button class="btn btn--primary btn--block js-evt-submit" disabled>この内容でイベント掲載を依頼する</button>
+    <p class="modal__alt" style="margin-top:10px;">運営による確認のうえ、イベント一覧・詳細ページに掲載されます。</p>
+  </div>
+</div></section>
+
+<div id="tm-footer"></div>
+<script src="assets/js/chrome.js"></script>
+<script>
+var a=document.querySelector('.js-evt-agree'),s=document.querySelector('.js-evt-submit');
+a.addEventListener('change',function(){s.disabled=!a.checked;});
+</script>
+</body>
+</html>

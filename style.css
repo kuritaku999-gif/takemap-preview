@@ -1,0 +1,17 @@
+/*
+Theme Name: 竹マップ (Takemap)
+Theme URI: https://takemap.local/
+Author: Kurita
+Author URI: https://takemap.local/
+Description: 足立区竹ノ塚エリアの「食べる・暮らす・遊ぶ」を地図のように網羅するローカルWebマガジン専用WordPressテーマ。完全オリジナル設計。
+Version: 0.1.0
+Requires at least: 6.0
+Tested up to: 6.6
+Requires PHP: 7.4
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: takemap
+Tags: local, magazine, custom-post-types, custom-menu, featured-images, threaded-comments
+*/
+
+/* このファイルは識別用。実スタイルは assets/css/main.css に分離 */
