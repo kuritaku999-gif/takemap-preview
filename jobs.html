@@ -56,7 +56,7 @@
         <h3 class="job__title">ホールスタッフ募集！まかない付き・未経験大歓迎</h3>
         <p class="job__pay"><span>時給</span>1,180円〜1,400円</p>
       </div>
-      <div class="job__action"><button class="btn btn--primary btn--sm">応募する</button><span class="job__deadline">締切 6/30</span></div>
+      <div class="job__action"><a class="btn btn--primary btn--sm" href="job-single.html">詳細・応募する</a><span class="job__deadline">締切 6/30</span></div>
     </article>
     <article class="job">
       <div class="job__logo"><img src="assets/img/sozai/44.png" alt=""></div>
@@ -66,7 +66,7 @@
         <h3 class="job__title">朝のパン製造補助スタッフ｜週3日〜OK</h3>
         <p class="job__pay"><span>時給</span>1,150円〜</p>
       </div>
-      <div class="job__action"><button class="btn btn--primary btn--sm">応募する</button><span class="job__deadline">締切 7/10</span></div>
+      <div class="job__action"><a class="btn btn--primary btn--sm" href="job-single.html">詳細・応募する</a><span class="job__deadline">締切 7/10</span></div>
     </article>
     <article class="job">
       <div class="job__logo"><img src="assets/img/sozai/45.png" alt=""></div>
@@ -76,7 +76,7 @@
         <h3 class="job__title">スタイリスト／アシスタント募集｜駅徒歩5分</h3>
         <p class="job__pay"><span>月給</span>24万円〜32万円</p>
       </div>
-      <div class="job__action"><button class="btn btn--primary btn--sm">応募する</button><span class="job__deadline">随時募集</span></div>
+      <div class="job__action"><a class="btn btn--primary btn--sm" href="job-single.html">詳細・応募する</a><span class="job__deadline">随時募集</span></div>
     </article>
     <article class="job">
       <div class="job__logo"><img src="assets/img/sozai/14.png" alt=""></div>
@@ -86,7 +86,7 @@
         <h3 class="job__title">保育補助スタッフ｜資格不問・扶養内勤務OK</h3>
         <p class="job__pay"><span>時給</span>1,200円〜</p>
       </div>
-      <div class="job__action"><button class="btn btn--primary btn--sm">応募する</button><span class="job__deadline">締切 6/25</span></div>
+      <div class="job__action"><a class="btn btn--primary btn--sm" href="job-single.html">詳細・応募する</a><span class="job__deadline">締切 6/25</span></div>
     </article>
     <article class="job">
       <div class="job__logo"><img src="assets/img/sozai/21.png" alt=""></div>
@@ -96,7 +96,7 @@
         <h3 class="job__title">レジ・品出しスタッフ｜高校生・シニア活躍中</h3>
         <p class="job__pay"><span>時給</span>1,113円〜</p>
       </div>
-      <div class="job__action"><button class="btn btn--primary btn--sm">応募する</button><span class="job__deadline">随時募集</span></div>
+      <div class="job__action"><a class="btn btn--primary btn--sm" href="job-single.html">詳細・応募する</a><span class="job__deadline">随時募集</span></div>
     </article>
   </div>
 
@@ -131,6 +131,8 @@
 <script>
 document.querySelectorAll('.fchip').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.fchip').forEach(x=>x.classList.remove('on'));c.classList.add('on');}));
 document.querySelectorAll('.chips-input .chip').forEach(c=>c.addEventListener('click',()=>c.classList.toggle('on')));
+// 求人カードをクリックで詳細ページへ
+document.querySelectorAll('.job').forEach(j=>{j.style.cursor='pointer';j.addEventListener('click',e=>{if(!e.target.closest('a,button'))location.href='job-single.html';});});
 </script>
 </body>
 </html>

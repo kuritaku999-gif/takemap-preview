@@ -477,4 +477,47 @@ img{max-width:100%;display:block;}
 .to-top:hover .to-top__chara{animation:sway .5s ease-in-out infinite;}
 @media(max-width:560px){.to-top{right:14px;bottom:16px;}.to-top__chara{width:54px;height:54px;}}
 
+/* ===== 掲示板スレッド詳細 ===== */
+.post-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px 26px;}
+.post-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.post-head__av{width:50px;height:50px;border-radius:99px;overflow:hidden;flex:none;background:var(--bg);}
+.post-head__av img{width:100%;height:100%;object-fit:cover;}
+.post-body p{font-size:14.5px;line-height:1.95;}
+.post-img{margin-top:14px;border-radius:12px;border:1px solid var(--line);max-width:360px;}
+.reply{display:flex;gap:14px;padding:18px 2px;border-bottom:1px solid var(--line);}
+.reply:last-child{border-bottom:none;}
+.reply__av{width:44px;height:44px;border-radius:99px;overflow:hidden;flex:none;background:var(--bg);}
+.reply__av img{width:100%;height:100%;object-fit:cover;}
+.reply__main{flex:1;min-width:0;}
+.reply__head{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--ink-faint);margin-bottom:5px;}
+.reply__name{font-family:var(--hand);font-size:14px;color:var(--ink);}
+.reply__body{font-size:14px;line-height:1.85;}
+.reply__img{margin-top:10px;border-radius:10px;max-width:240px;border:1px solid var(--line);}
+.reply__del{margin-left:auto;font-size:11.5px;color:var(--ink-faint);background:none;border:1px solid var(--line);border-radius:8px;padding:3px 10px;cursor:pointer;font-family:var(--hand);}
+.reply__del:hover{border-color:var(--accent);color:var(--accent-deep);}
+
+/* ===== クーポンモーダル（見せるだけ） ===== */
+.modal__box--wide{width:min(460px,100%);}
+.cmodal__lead{text-align:center;font-family:var(--hand);font-size:14px;color:var(--ink-soft);margin-bottom:12px;}
+.cmodal__visual{border-radius:14px;overflow:hidden;position:relative;aspect-ratio:16/10;background:var(--bg-2);}
+.cmodal__visual img{width:100%;height:100%;object-fit:cover;}
+.cmodal__offer{position:absolute;left:12px;top:12px;font-family:var(--hand);font-size:20px;background:var(--accent);color:#fff;padding:5px 16px;border-radius:99px;box-shadow:0 4px 10px rgba(0,0,0,.18);}
+.cmodal__title{font-family:var(--hand);font-size:18px;text-align:center;margin:14px 0 2px;}
+.cmodal__shop{text-align:center;font-size:12.5px;color:var(--ink-faint);}
+.cmodal__cond{background:var(--bg);border-radius:12px;padding:14px 16px;font-size:13px;color:var(--ink-soft);line-height:1.95;text-align:left;margin:14px 0;}
+.cmodal__cond b{color:var(--accent-deep);}
+.cmodal__show{background:var(--accent-soft);color:var(--accent-deep);border-radius:12px;padding:13px;font-family:var(--hand);text-align:center;font-size:15px;line-height:1.5;}
+
+/* ===== スタッフレンタル モーダル ===== */
+.smodal__top{display:flex;gap:16px;align-items:center;margin-bottom:16px;}
+.smodal__photo{width:96px;height:96px;border-radius:16px;overflow:hidden;flex:none;background:linear-gradient(160deg,#eafbfd,#d2eef3);display:grid;place-items:center;}
+.smodal__photo img{width:88%;height:88%;object-fit:contain;}
+.smodal__name{font-family:var(--hand);font-size:22px;}
+.smodal__name small{font-size:12px;color:var(--ink-faint);margin-left:6px;font-family:"Barlow";}
+.smodal__rate{font-family:var(--hand);color:var(--accent-deep);font-size:16px;margin-top:2px;}
+.smodal__skills{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.smodal__skills span{font-family:var(--hand);font-size:12px;padding:3px 11px;border-radius:99px;background:var(--accent-soft);color:var(--accent-deep);}
+.smodal__bio{font-size:13.5px;color:var(--ink-soft);line-height:1.85;background:var(--bg);border-radius:12px;padding:13px 15px;margin-bottom:16px;}
+.modal__box--scroll{max-height:90vh;overflow-y:auto;}
+
 @media(prefers-reduced-motion:reduce){*{animation:none !important;}}

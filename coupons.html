@@ -66,10 +66,37 @@
   </div>
 </div></section>
 
+<!-- クーポン詳細モーダル -->
+<div class="modal js-cmodal">
+  <div class="modal__box modal__box--wide">
+    <button class="modal__close js-cmodal-close" aria-label="閉じる">×</button>
+    <p class="cmodal__lead">見せるだけでOK！お得にお買い物を楽しもう♪</p>
+    <div class="cmodal__visual"><span class="cmodal__offer" id="cm-offer"></span><img id="cm-img" src="" alt=""></div>
+    <h3 class="cmodal__title" id="cm-title"></h3>
+    <p class="cmodal__shop" id="cm-shop"></p>
+    <div class="cmodal__cond"><b>ご利用条件</b><br><span id="cm-cond"></span><br><b>有効期限</b>：<span id="cm-valid"></span></div>
+    <div class="cmodal__show">📱 この画面をお店で見せてご利用ください<br><span style="font-size:12px;opacity:.85;">印刷は不要です</span></div>
+  </div>
+</div>
+
 <div id="tm-footer"></div>
 <script src="assets/js/chrome.js"></script>
 <script>
 document.querySelectorAll('.fchip').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.fchip').forEach(x=>x.classList.remove('on'));c.classList.add('on');}));
+// クーポン詳細モーダル
+var cm=document.querySelector('.js-cmodal');
+function openCoupon(c){
+  cm.querySelector('#cm-offer').textContent=c.querySelector('.coupon__off').textContent;
+  cm.querySelector('#cm-img').src=c.querySelector('.coupon__media img').getAttribute('src');
+  cm.querySelector('#cm-title').textContent=c.querySelector('.coupon__title').textContent;
+  cm.querySelector('#cm-shop').textContent=c.querySelector('.coupon__shop').textContent;
+  cm.querySelector('#cm-cond').textContent=c.querySelector('.coupon__foot span').textContent;
+  cm.querySelector('#cm-valid').textContent=c.querySelector('.coupon__valid').textContent.replace('有効期限：','');
+  cm.classList.add('open');
+}
+document.querySelectorAll('.coupon').forEach(c=>{c.style.cursor='pointer';c.addEventListener('click',function(){openCoupon(c);});});
+document.querySelector('.js-cmodal-close').addEventListener('click',function(){cm.classList.remove('open');});
+cm.addEventListener('click',function(e){if(e.target===cm)cm.classList.remove('open');});
 </script>
 </body>
 </html>

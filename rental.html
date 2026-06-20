@@ -131,10 +131,53 @@
   </div>
 </section>
 
+<!-- スタッフ プロフィール＋申し込みモーダル -->
+<div class="modal js-rmodal">
+  <div class="modal__box modal__box--scroll">
+    <button class="modal__close js-rmodal-close" aria-label="閉じる">×</button>
+    <div class="smodal__top">
+      <div class="smodal__photo"><img id="rm-photo" src="" alt=""></div>
+      <div>
+        <div class="smodal__name" id="rm-name"></div>
+        <div class="smodal__rate" id="rm-rate"></div>
+        <div class="smodal__skills" id="rm-skills"></div>
+      </div>
+    </div>
+    <div class="smodal__bio" id="rm-bio"></div>
+    <h3 style="font-family:var(--hand);font-size:18px;margin-bottom:12px;">この人にレンタルを申し込む</h3>
+    <form onsubmit="return false;">
+      <div class="form-grid2">
+        <div class="form-row"><label>希望日</label><input class="input" type="date"></div>
+        <div class="form-row"><label>希望時間帯</label><input class="input" placeholder="例：10:00〜15:00"></div>
+      </div>
+      <div class="form-row"><label>お願いしたい業務<span class="req">必須</span></label><textarea class="textarea" style="min-height:80px;" placeholder="例：イベントの売り子、設営の手伝い、レジ応援 など"></textarea></div>
+      <div class="form-grid2">
+        <div class="form-row"><label>お名前・店舗名<span class="req">必須</span></label><input class="input" placeholder="例：龍の郷 田中"></div>
+        <div class="form-row"><label>連絡先<span class="req">必須</span></label><input class="input" placeholder="電話 / メール"></div>
+      </div>
+      <button class="btn btn--primary btn--block" type="submit">この内容でレンタルを申し込む</button>
+      <p class="modal__alt" style="margin-top:10px;">竹マップが間に入って、日程と内容を調整します。</p>
+    </form>
+  </div>
+</div>
+
 <div id="tm-footer"></div>
 <script src="assets/js/chrome.js"></script>
 <script>
 document.querySelectorAll('.chips-input .chip').forEach(c=>c.addEventListener('click',()=>c.classList.toggle('on')));
+// スタッフ プロフィール＋申し込みモーダル
+var rm=document.querySelector('.js-rmodal');
+function openStaff(st){
+  rm.querySelector('#rm-photo').src=st.querySelector('.staff__photo img').getAttribute('src');
+  rm.querySelector('#rm-name').innerHTML=st.querySelector('.staff__name').innerHTML;
+  rm.querySelector('#rm-rate').textContent='報酬：'+st.querySelector('.staff__rate').textContent.replace('/h','／時〜');
+  rm.querySelector('#rm-skills').innerHTML=st.querySelector('.staff__skills').innerHTML;
+  rm.querySelector('#rm-bio').textContent=st.querySelector('.staff__bio').textContent;
+  rm.classList.add('open');
+}
+document.querySelectorAll('.staff .btn--primary').forEach(function(b){b.addEventListener('click',function(){openStaff(b.closest('.staff'));});});
+document.querySelector('.js-rmodal-close').addEventListener('click',function(){rm.classList.remove('open');});
+rm.addEventListener('click',function(e){if(e.target===rm)rm.classList.remove('open');});
 </script>
 </body>
 </html>

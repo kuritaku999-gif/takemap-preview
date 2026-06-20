@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>駅前にできた町中華「龍の郷」｜掲示板｜竹マップ</title>
+<meta name="theme-color" content="#8cc63f">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Klee+One:wght@400;600&family=Yomogi&family=Barlow:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/aruku.css">
+</head>
+<body data-page="board">
+<div class="loader js-loader" aria-hidden="true"><div class="loader__inner"><img class="loader__chara" src="assets/img/chara/00.png" alt=""><div class="loader__sub">竹の塚情報サイト</div><div class="loader__title"><span style="animation-delay:0s">竹</span><span style="animation-delay:.12s">マ</span><span style="animation-delay:.24s">ッ</span><span style="animation-delay:.36s">プ</span></div><div class="loader__dots"><i></i><i></i><i></i></div></div></div>
+<div id="tm-header"></div>
+
+<div class="page-head"><div class="page-head__inner" style="padding:22px 24px;">
+  <div class="breadcrumb"><a href="index.html">HOME</a><span>›</span><a href="board.html">掲示板</a><span>›</span><span>グルメの話</span></div>
+</div></div>
+
+<section class="section" style="padding-top:30px;"><div class="container" style="max-width:840px;">
+  <div class="note-banner">🛈 これはデザインプレビューです。投稿・返信・削除の保存機能はWordPress実装時に有効化されます。</div>
+
+  <!-- 元投稿 -->
+  <div class="post-card reveal">
+    <span class="thread__cat">グルメの話</span>
+    <h1 class="evt-title" style="font-size:24px;margin:8px 0 14px;">駅前にできた町中華「龍の郷」行った人いますか？</h1>
+    <div class="post-head">
+      <div class="post-head__av"><img src="assets/img/chara/04.png" alt=""></div>
+      <div><div class="reply__name">たけのこ太郎</div><div style="font-size:12px;color:var(--ink-faint)">2026.06.21 14:20</div></div>
+      <button class="reply__del" onclick="delPost(this)" style="margin-left:auto;">削除</button>
+    </div>
+    <div class="post-body">
+      <p>先週オープンした竹の塚駅前の町中華「龍の郷」、行ってきました！担々麺がめちゃくちゃ美味しかったです🍜 チャーハンもパラパラで最高。みなさんもう行きました？おすすめメニューあれば教えてください〜。</p>
+      <img class="post-img" src="assets/img/sozai/61.png" alt="">
+    </div>
+  </div>
+
+  <!-- 返信一覧 -->
+  <h2 style="font-family:var(--hand);font-size:20px;margin:30px 0 12px;display:inline-block;padding-bottom:4px;background:linear-gradient(var(--accent),var(--accent)) no-repeat 0 100%/100% 5px;">返信 23件</h2>
+  <div class="post-card reveal" style="padding:8px 24px;">
+    <div class="reply">
+      <div class="reply__av"><img src="assets/img/chara/15.png" alt=""></div>
+      <div class="reply__main">
+        <div class="reply__head"><span class="reply__name">みかんママ</span><span>2026.06.21 15:02</span><button class="reply__del" onclick="delPost(this)">削除</button></div>
+        <div class="reply__body">行きました！子連れでもOKでしたよ〜。座敷席があって助かりました。担々麺、私も大好きです😋</div>
+      </div>
+    </div>
+    <div class="reply">
+      <div class="reply__av"><img src="assets/img/chara/09.png" alt=""></div>
+      <div class="reply__main">
+        <div class="reply__head"><span class="reply__name">げんき</span><span>2026.06.21 16:30</span><button class="reply__del" onclick="delPost(this)">削除</button></div>
+        <div class="reply__body">餃子も忘れちゃいけない！皮パリパリで肉汁すごいです。これ写真です👇</div>
+        <img class="reply__img" src="assets/img/sozai/62.png" alt="">
+      </div>
+    </div>
+    <div class="reply">
+      <div class="reply__av"><img src="assets/img/chara/06.png" alt=""></div>
+      <div class="reply__main">
+        <div class="reply__head"><span class="reply__name">ご近所さん</span><span>2026.06.21 18:11</span><button class="reply__del" onclick="delPost(this)">削除</button></div>
+        <div class="reply__body">ランチの定食がコスパ良すぎてリピートしてます。平日は混むので開店直後がおすすめですよ。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 返信フォーム -->
+  <div class="form-card reveal" style="margin-top:26px;max-width:none;">
+    <h2 style="font-family:var(--hand);font-size:19px;margin-bottom:14px;">この話題に返信する</h2>
+    <div class="form-row"><label>ニックネーム<span class="req">必須</span></label><input class="input" placeholder="例：たけのこ太郎"></div>
+    <div class="form-row"><label>返信内容<span class="req">必須</span></label><textarea class="textarea" placeholder="竹ノ塚のことを、みんなに教えてあげましょう。"></textarea></div>
+    <div class="form-row"><label>画像を添付（任意）</label><div class="uploader">クリックして写真をアップロード（最大4枚）</div></div>
+    <div class="form-row"><label>削除用パスワード<span class="req">必須</span></label><input class="input" type="password" placeholder="あとで自分の投稿を消すための合言葉"><p style="font-size:11.5px;color:var(--ink-faint);margin-top:5px;">※このパスワードを入力すれば、自分の投稿をいつでも削除できます。</p></div>
+    <label class="check-row"><input type="checkbox" class="js-th-agree"><a href="#" class="js-register" style="color:var(--accent-deep);font-weight:600;">利用規約</a>（出会い目的の投稿禁止・迷惑行為時のブロック等）に同意します。</label>
+    <button class="btn btn--primary btn--block js-th-submit" disabled>返信を投稿する</button>
+  </div>
+</div></section>
+
+<div id="tm-footer"></div>
+<script src="assets/js/chrome.js"></script>
+<script>
+var a=document.querySelector('.js-th-agree'),s=document.querySelector('.js-th-submit');
+a.addEventListener('change',function(){s.disabled=!a.checked;});
+function delPost(btn){
+  var pw=prompt('投稿時に設定した「削除用パスワード」を入力してください');
+  if(pw===null) return;
+  if(pw.trim()===''){ alert('パスワードを入力してください。'); return; }
+  alert('（プレビュー）パスワードが一致すれば、この投稿が削除されます。\n本番では入力されたパスワードと照合して削除します。');
+}
+</script>
+</body>
+</html>
